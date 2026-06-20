@@ -1,4 +1,4 @@
-# CI-CD
+# devops-pipeline
 
 Spring Boot 애플리케이션을 Docker 이미지로 빌드하고 Kubernetes 클러스터에 배포하기 위한 CI/CD 인프라 템플릿입니다.
 
