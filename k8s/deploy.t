@@ -12,7 +12,7 @@ spec:
     metadata:
       annotations:
         prometheus.io/scrape: 'true'
-        prometheus.io/port: '8080'
+        prometheus.io/port: '8081'
         prometheus.io/path: '/actuator/prometheus'
         update: ${HASHCODE}
       labels:
@@ -28,5 +28,19 @@ spec:
           value: ${USER_NAME}
         - name: NAMESPACE
           value: ${NAMESPACE}
-        - name: SPRING_PROFILES_ACTIVE  
-          value: "prod"  
+        - name: SPRING_PROFILES_ACTIVE
+          value: "prod"
+        livenessProbe:
+          httpGet:
+            path: /actuator/health/liveness
+            port: 8081
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /actuator/health/readiness
+            port: 8081
+          initialDelaySeconds: 15
+          periodSeconds: 5
+          failureThreshold: 3

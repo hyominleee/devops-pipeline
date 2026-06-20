@@ -3,22 +3,22 @@ kind: Ingress
 metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod
-  name: ${USER_NAME}-myfirst-ingress
+  name: ${USER_NAME}-ingress
   namespace: ${NAMESPACE}
 spec:
   ingressClassName: public-nginx
   rules:
-  - host: ${USER_NAME}-ingress.skala25a.project.skala-ai.com
+  - host: ${INGRESS_HOST}
     http:
       paths:
       - backend:
           service:
-            name: ${USER_NAME}-myfirst-api-server
+            name: ${USER_NAME}-${SERVICE_NAME}
             port:
               number: 8080
         path: /
         pathType: Prefix
   tls:
   - hosts:
-    - '${USER_NAME}-ingress.skala25a.project.skala-ai.com'
-    secretName: ${USER_NAME}-ingress-project-tls-cert
+    - '${INGRESS_HOST}'
+    secretName: ${USER_NAME}-ingress-tls-cert
