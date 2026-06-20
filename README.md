@@ -3,7 +3,7 @@
 Spring Boot 애플리케이션을 Docker 이미지로 빌드하고 Kubernetes 클러스터에 배포하기 위한 CI/CD 인프라 템플릿입니다.
 
 > **실제 앱 코드는 별도 레포에 있습니다.**
-> 👉 [springboot-cicd-k8s](https://github.com/hyominleee/springboot-cicd-k8s)
+> 👉 [springboot-restapi](https://github.com/hyominleee/springboot-restapi)
 
 ---
 
@@ -35,10 +35,10 @@ CI-CD/
 
 | 레포 | 역할 |
 |------|------|
-| [springboot-cicd-k8s](https://github.com/hyominleee/springboot-cicd-k8s) | Spring Boot 앱 소스 코드 |
+| [springboot-restapi](https://github.com/hyominleee/springboot-restapi) | Spring Boot 앱 소스 코드 |
 | **CI-CD** (이 레포) | Dockerfile, Jenkins 파이프라인, K8s 매니페스트, 배포 스크립트 |
 
-Jenkins가 파이프라인을 실행할 때 `springboot-cicd-k8s` 레포를 클론하여 빌드합니다.
+Jenkins가 파이프라인을 실행할 때 `springboot-restapi` 레포를 클론하여 빌드합니다.
 
 ---
 
@@ -136,7 +136,7 @@ Jenkins에서 Pipeline 잡을 생성하고, 이 레포의 `Jenkinsfile`을 Pipel
 
 ## 로컬 빌드 및 푸시
 
-앱 레포(`springboot-cicd-k8s`)에서 먼저 Maven 빌드 후 아래 스크립트를 실행합니다.
+앱 레포(`springboot-restapi`)에서 먼저 Maven 빌드 후 아래 스크립트를 실행합니다.
 
 ```bash
 # Docker 이미지 빌드
